@@ -44,11 +44,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'apps.settings',
+
     'rest_framework',
     "rest_framework_simplejwt.token_blacklist",
+    'django_filters',
 
+    'apps.product',
     'apps.user',
+    'apps.settings',
 ]
 
 MIDDLEWARE = [
@@ -153,3 +156,13 @@ SIMPLE_JWT = {
     "BLACKLIST_AFTER_ROTATION": True,
 }
 
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ],
+}
